@@ -11,10 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('menus', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        Schema::create('hanifah_menus', function (Blueprint $table) {
+    $table->id();
+    $table->string('name');
+    $table->text('description')->nullable();
+    $table->integer('price');
+    $table->string('image')->nullable();
+    $table->foreignId('category_id')->constrained('hanifah_categories')->onDelete('cascade');
+    $table->timestamps();
+});
+
     }
 
     /**
